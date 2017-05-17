@@ -5,3 +5,4 @@ propiedad(Calle Falsa 123, 200, 3).
 tieneJardin(Tinsmith Circle17741).
 tieneJardin(Av. Moreno7082).
 tieneJardin(Av. Siempre Viva 742).
+tienePiscina(Av. Moreno 7082, 30).
