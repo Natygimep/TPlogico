@@ -6,6 +6,6 @@ tieneJardin(tinsmithCircle17741).
 tieneJardin(avMoreno7082).
 tieneJardin(avSiempreViva742).
 tienePiscina(avMoreno7082, 30).
-tieneMismosAmbientes(X, Y) :- propiedad(X, _, Ambientes),
-                              propiedad(Y, _, Ambientes),
-                              X \= Y.
+tieneMismosAmbientes(UnaPropiedad, OtraPropiedad) :- propiedad(UnaPropiedad, _, Ambientes),
+                              propiedad(OtraPropiedad, _, Ambientes),
+                              UnaPropiedad \= OtraPropiedad.
