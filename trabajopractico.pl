@@ -44,3 +44,7 @@ busca(chamaleon, UnRequerimiento) :-
 % ?- tieneMismosAmbientes(X,Y).
 % X = tinsmithCircle17741,
 % Y = calleFalsa123 .
+% 3 Mostrar qué quiere Pedro.
+% ?- busca(pedro, Requerimiento).
+% Requerimiento = ambientes(2) ;
+% Requerimiento = piscina(15).
