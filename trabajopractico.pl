@@ -1,11 +1,7 @@
+propiedad(tinsmithCircle17741, 700, 3).
 propiedad(avMoreno7082, 2000, 7).
 propiedad(avSiempreViva742, 1000, 4).
 propiedad(calleFalsa123, 200, 3).
-
-tieneJardin(tinsmithCircle17741).
-tieneJardin(avMoreno7082).
-tieneJardin(avSiempreViva742).
-tienePiscina(avMoreno7082, 30).
 
 cliente(carlos).
 cliente(ana).
@@ -34,7 +30,27 @@ busca(chamaleon, UnRequerimiento) :-
        busca(UnCliente, UnRequerimiento),
        UnCliente \= chamaleon.
 
+cumplePiscina(Propiedad, MetrosRequeridos) :-
+      tiene(Propiedad, piscina(Metros)),
+      Metros >= MetrosRequeridos.
+cumpleAmbientes(Propiedad, AmbientesRequeridos) :-
+      propiedad(Propiedad, _, Ambientes),
+      Ambientes >= AmbientesRequeridos.
 
+posiblePropiedad(UnaPropiedad, UnaPersona) :-
+      cliente(UnaPersona),
+      tiene(UnaPropiedad, jardin),
+      busca(UnaPersona, jardin).
+
+posiblePropiedad(UnaPropiedad, UnaPersona) :-
+      cliente(UnaPersona),
+      busca(UnaPersona, ambientes(UnosAmbientes)),
+      cumpleAmbientes(UnaPropiedad, UnosAmbientes).
+
+posiblePropiedad(UnaPropiedad, UnaPersona) :-
+      cliente(UnaPersona),
+      busca(UnaPersona, piscina(UnosMetros)),
+      cumplePiscina(UnaPropiedad, UnosMetros).
 
 % Consultas
 % 1 Si existe alguna propiedad con una piscina de 30 metros. Y si es que existe, cuál es.
@@ -48,3 +64,13 @@ busca(chamaleon, UnRequerimiento) :-
 % ?- busca(pedro, Requerimiento).
 % Requerimiento = ambientes(2) ;
 % Requerimiento = piscina(15).
+% 4. Si existe alguna propiedad que tenga 2 ambientes.
+% ?- propiedad(Propiedad, Precio, 2).
+% false.
+% 5. Cuál propiedad tiene algo de lo que quiere Pedro.
+% ?- posiblePropiedad(UnaPropiedad, pedro).
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPropiedad = avMoreno7082 ;
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPropiedad = calleFalsa123 ;
+% UnaPropiedad = avMoreno7082.
