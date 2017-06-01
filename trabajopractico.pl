@@ -1,5 +1,5 @@
 propiedad(tinsmithCircle17741, 700, 3).
-propiedad(avMoreno7082, 2000, 7).
+propiedad(avMoreno708, 2000, 7).
 propiedad(avSiempreViva742, 1000, 4).
 propiedad(calleFalsa123, 200, 3).
 
@@ -10,9 +10,9 @@ cliente(pedro).
 cliente(chamaleon).
 
 tiene(tinsmithCircle17741, jardin).
-tiene(avMoreno7082, jardin).
+tiene(avMoreno708, jardin).
 tiene(avSiempreViva742, jardin).
-tiene(avMoreno7082, piscina(30)).
+tiene(avMoreno708, piscina(30)).
 
 tieneMismosAmbientes(UnaPropiedad, OtraPropiedad) :-
        propiedad(UnaPropiedad, _, Ambientes),
@@ -38,19 +38,28 @@ cumpleAmbientes(Propiedad, AmbientesRequeridos) :-
       Ambientes >= AmbientesRequeridos.
 
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
-      cliente(UnaPersona),
       tiene(UnaPropiedad, jardin),
       busca(UnaPersona, jardin).
 
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
-      cliente(UnaPersona),
       busca(UnaPersona, ambientes(UnosAmbientes)),
       cumpleAmbientes(UnaPropiedad, UnosAmbientes).
 
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
-      cliente(UnaPersona),
       busca(UnaPersona, piscina(UnosMetros)),
       cumplePiscina(UnaPropiedad, UnosMetros).
+
+cumpleAlgo(UnaPropiedad) :-
+      tiene(UnaPropiedad, jardin),
+      busca(_ , jardin).
+cumpleAlgo(UnaPropiedad) :-
+      busca(_ , ambientes(UnosAmbientes)),
+      cumpleAmbientes(UnaPropiedad, UnosAmbientes).
+cumpleAlgo(UnaPropiedad) :-
+      busca(_ , piscina(UnosMetros)),
+      cumplePiscina(UnaPropiedad, UnosMetros).
+
+
 
 % Consultas
 % 1 Si existe alguna propiedad con una piscina de 30 metros. Y si es que existe, cuál es.
@@ -74,3 +83,4 @@ posiblePropiedad(UnaPropiedad, UnaPersona) :-
 % UnaPropiedad = avSiempreViva742 ;
 % UnaPropiedad = calleFalsa123 ;
 % UnaPropiedad = avMoreno7082.
+% 6. Qué se está deseando de la propiedad de Av. Moreno 708.
