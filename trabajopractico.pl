@@ -31,13 +31,9 @@ busca(maria, piscina(15)).
 busca(pedro, UnRequerimiento) :-
        busca(maria, UnRequerimiento).
 busca(chamaleon, UnRequerimiento) :-
-       cliente(UnCliente),
        busca(UnCliente, UnRequerimiento),
        UnCliente \= chamaleon.
 
-requiere(UnCliente, UnRequerimiento) :-
-      cliente(UnCliente),
-      busca(UnCliente, UnRequerimiento).
 
 
 % Consultas
