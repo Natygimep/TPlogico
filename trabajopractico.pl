@@ -43,11 +43,11 @@ posiblePropiedad(UnaPropiedad, UnaPersona) :-
 
 noCumpleNinguna(UnaPersona, UnRequerimiento) :-
       busca(UnaPersona, UnRequerimiento),
-      posiblePropiedad(UnaPropiedad, UnaPersona)
+      not(posiblePropiedad(_ , UnaPersona)).
 
 % cumpleAlgo(UnaPropiedad) :-
-      tiene(UnaPropiedad, jardin),
-      busca(_ , jardin).
+%      tiene(UnaPropiedad, jardin),
+%      busca(_ , jardin).
 % cumpleAlgo(UnaPropiedad) :-
   %    busca(_ , ambientes(UnosAmbientes)),
   %    cumpleAmbientes(UnaPropiedad, UnosAmbientes).
