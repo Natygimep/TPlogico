@@ -3,12 +3,6 @@ propiedad(avMoreno708, 2000, 7).
 propiedad(avSiempreViva742, 1000, 4).
 propiedad(calleFalsa123, 200, 3).
 
-cliente(carlos).
-cliente(ana).
-cliente(maria).
-cliente(pedro).
-cliente(chamaleon).
-
 tiene(tinsmithCircle17741, jardin).
 tiene(avMoreno708, jardin).
 tiene(avSiempreViva742, jardin).
@@ -40,24 +34,26 @@ cumpleAmbientes(Propiedad, AmbientesRequeridos) :-
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
       tiene(UnaPropiedad, jardin),
       busca(UnaPersona, jardin).
-
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
       busca(UnaPersona, ambientes(UnosAmbientes)),
       cumpleAmbientes(UnaPropiedad, UnosAmbientes).
-
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
       busca(UnaPersona, piscina(UnosMetros)),
       cumplePiscina(UnaPropiedad, UnosMetros).
 
-cumpleAlgo(UnaPropiedad) :-
+noCumpleNinguna(UnaPersona, UnRequerimiento) :-
+      busca(UnaPersona, UnRequerimiento),
+      posiblePropiedad(UnaPropiedad, UnaPersona)
+
+% cumpleAlgo(UnaPropiedad) :-
       tiene(UnaPropiedad, jardin),
       busca(_ , jardin).
-cumpleAlgo(UnaPropiedad) :-
-      busca(_ , ambientes(UnosAmbientes)),
-      cumpleAmbientes(UnaPropiedad, UnosAmbientes).
-cumpleAlgo(UnaPropiedad) :-
-      busca(_ , piscina(UnosMetros)),
-      cumplePiscina(UnaPropiedad, UnosMetros).
+% cumpleAlgo(UnaPropiedad) :-
+  %    busca(_ , ambientes(UnosAmbientes)),
+  %    cumpleAmbientes(UnaPropiedad, UnosAmbientes).
+% cumpleAlgo(UnaPropiedad) :-
+  %    busca(_ , piscina(UnosMetros)),
+  %    cumplePiscina(UnaPropiedad, UnosMetros).
 
 
 
