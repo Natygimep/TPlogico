@@ -80,3 +80,7 @@ noCumpleNinguna(UnaPersona, UnRequerimiento) :-
 % UnaPropiedad = calleFalsa123 ;
 % UnaPropiedad = avMoreno7082.
 % 6. Qué se está deseando de la propiedad de Av. Moreno 708.
+% 7. Determinar qué característica fue solicitada y ninguna propiedad pudo cumplir.
+% ?- noCumpleNinguna(X, Y).
+% X = ana,
+% Y = piscina(100) ;
