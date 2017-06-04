@@ -45,15 +45,15 @@ noCumpleNinguna(UnaPersona, UnRequerimiento) :-
       busca(UnaPersona, UnRequerimiento),
       not(posiblePropiedad(_ , UnaPersona)).
 
-% cumpleAlgo(UnaPropiedad) :-
-%      tiene(UnaPropiedad, jardin),
-%      busca(_ , jardin).
-% cumpleAlgo(UnaPropiedad) :-
-  %    busca(_ , ambientes(UnosAmbientes)),
-  %    cumpleAmbientes(UnaPropiedad, UnosAmbientes).
-% cumpleAlgo(UnaPropiedad) :-
-  %    busca(_ , piscina(UnosMetros)),
-  %    cumplePiscina(UnaPropiedad, UnosMetros).
+ cumpleAlgo(UnaPropiedad) :-
+      busca(_ , jardin),
+      tiene(UnaPropiedad, jardin).
+ cumpleAlgo(UnaPropiedad) :-
+      busca(_ , ambientes(UnosAmbientes)),
+      cumpleAmbientes(UnaPropiedad, UnosAmbientes).
+ cumpleAlgo(UnaPropiedad) :-
+      busca(_ , piscina(UnosMetros)),
+      cumplePiscina(UnaPropiedad, UnosMetros).
 
 
 
