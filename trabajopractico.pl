@@ -1,7 +1,12 @@
-propiedad(tinsmithCircle17741, 700, 3).
-propiedad(avMoreno708, 2000, 7).
-propiedad(avSiempreViva742, 1000, 4).
-propiedad(calleFalsa123, 200, 3).
+propiedad(tinsmithCircle17741, 700).
+propiedad(avMoreno708, 2000).
+propiedad(avSiempreViva742, 1000).
+propiedad(calleFalsa123, 200).
+
+ambientes(tinsmithCircle17741,3).
+ambientes(avMoreno708,7).
+ambientes(avSiempreViva742, 4).
+ambientes(calleFalsa123, 3).
 
 tiene(tinsmithCircle17741, jardin).
 tiene(avMoreno708, jardin).
@@ -9,9 +14,15 @@ tiene(avSiempreViva742, jardin).
 tiene(avMoreno708, piscina(30)).
 
 tieneMismosAmbientes(UnaPropiedad, OtraPropiedad) :-
-       propiedad(UnaPropiedad, _, Ambientes),
-       propiedad(OtraPropiedad, _, Ambientes),
+       ambientes(UnaPropiedad, Ambientes),
+       ambientes(OtraPropiedad, Ambientes),
        UnaPropiedad \= OtraPropiedad.
+
+persona(carlos).
+persona(aca).
+persona(maria).
+persona(pedro).
+persona(chamaleon).
 
 busca(carlos, jardin).
 busca(carlos, ambientes(3)).
@@ -19,16 +30,17 @@ busca(ana, piscina(100)).
 busca(maria, ambientes(2)).
 busca(maria, piscina(15)).
 busca(pedro, UnRequerimiento) :-
-       busca(maria, UnRequerimiento).
+      busca(maria, UnRequerimiento).
 busca(chamaleon, UnRequerimiento) :-
-       busca(UnCliente, UnRequerimiento),
-       UnCliente \= chamaleon.
+      persona(UnCliente),
+      UnCliente \= chamaleon,
+      busca(UnCliente, UnRequerimiento).
 
 cumplePiscina(Propiedad, MetrosRequeridos) :-
       tiene(Propiedad, piscina(Metros)),
       Metros >= MetrosRequeridos.
 cumpleAmbientes(Propiedad, AmbientesRequeridos) :-
-      propiedad(Propiedad, _, Ambientes),
+      ambientes(Propiedad, Ambientes),
       Ambientes >= AmbientesRequeridos.
 
 posiblePropiedad(UnaPropiedad, UnaPersona) :-
@@ -41,7 +53,7 @@ posiblePropiedad(UnaPropiedad, UnaPersona) :-
       busca(UnaPersona, piscina(UnosMetros)),
       cumplePiscina(UnaPropiedad, UnosMetros).
 
-noCumpleNinguna(UnaPersona, UnRequerimiento) :-
+noCumpleNinguna(UnRequerimiento) :-
       busca(UnaPersona, UnRequerimiento),
       not(posiblePropiedad(_ , UnaPersona)).
 
@@ -61,17 +73,21 @@ noCumpleNinguna(UnaPersona, UnRequerimiento) :-
 % 1 Si existe alguna propiedad con una piscina de 30 metros. Y si es que existe, cuál es.
 % ?- tienePiscina(X, 30).
 % X = avMoreno708
+
 % 2 Si existe alguna propiedad que tenga la misma cantidad de ambientes que otra. Y si existen, cuáles son.
 % ?- tieneMismosAmbientes(X,Y).
 % X = tinsmithCircle17741,
 % Y = calleFalsa123 .
+
 % 3 Mostrar qué quiere Pedro.
 % ?- busca(pedro, Requerimiento).
 % Requerimiento = ambientes(2) ;
 % Requerimiento = piscina(15).
+
 % 4. Si existe alguna propiedad que tenga 2 ambientes.
 % ?- propiedad(Propiedad, Precio, 2).
 % false.
+
 % 5. Cuál propiedad tiene algo de lo que quiere Pedro.
 % ?- posiblePropiedad(UnaPropiedad, pedro).
 % UnaPropiedad = tinsmithCircle17741 ;
@@ -79,8 +95,17 @@ noCumpleNinguna(UnaPersona, UnRequerimiento) :-
 % UnaPropiedad = avSiempreViva742 ;
 % UnaPropiedad = calleFalsa123 ;
 % UnaPropiedad = avMoreno7082.
+
 % 6. Qué se está deseando de la propiedad de Av. Moreno 708.
+% /// sinceramente sigo sin entender que es lo que se pide en este punto.
+%
+%
+
 % 7. Determinar qué característica fue solicitada y ninguna propiedad pudo cumplir.
-% ?- noCumpleNinguna(X, Y).
-% X = ana,
-% Y = piscina(100) ;
+% ?- noCumpleNinguna(UnRequerimiento).
+% UnRequerimiento = piscina(100) ;
+
+
+% ENTREGA 2
+
+% 8.
