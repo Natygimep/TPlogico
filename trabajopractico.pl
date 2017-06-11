@@ -68,6 +68,17 @@ queSeDeseaDeUnaPropiedad(UnaPropiedad,UnRequerimiento) :-
     busca(_,UnRequerimiento),
     cumpleUnRequerimiento(UnaPropiedad,UnRequerimiento).
 
+cumpleTodo(Persona,Propiedad) :-
+    persona(Persona),
+    propiedad(Propiedad,_),
+    posiblePropiedad(Propiedad,Persona).
+
+mejorOpcion(Persona,Propiedad) :-
+    cumpleTodo(Persona,Propiedad),
+    propiedad(Propiedad,Precio),
+    forall((cumpleTodo(Persona,OtraPropiedad),OtraPropiedad \= Propiedad),(propiedad(OtraPropiedad,OtroPrecio),Precio < OtroPrecio)).
+
+
 % Consultas
 % 1 Si existe alguna propiedad con una piscina de 30 metros. Y si es que existe, cuál es.
 % ?- cumplePiscina(UnaPropiedad, 30).
@@ -119,4 +130,90 @@ queSeDeseaDeUnaPropiedad(UnaPropiedad,UnRequerimiento) :-
 
 % ENTREGA 2
 
-% 8.
+% 8. Qué persona se relaciona con cuál propiedad mediante ese predicado.
+% ?- cumpleTodo(UnaPersona, UnaPropiedad).
+% UnaPersona = carlos,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = carlos,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = carlos,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = carlos,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = carlos,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = carlos,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = carlos,
+% UnaPropiedad = calleFalsa123 ;
+% UnaPersona = maria,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = maria,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = maria,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = maria,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = maria,
+% UnaPropiedad = calleFalsa123 ;
+% UnaPersona = pedro,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = pedro,
+% UnaPropiedad = avMoreno708 ;
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = pedro,
+% UnaPersona = pedro,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = pedro,
+% UnaPropiedad = calleFalsa123 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = tinsmithCircle17741 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = chamaleon,
+% UnaPersona = chamaleon,
+% UnaPropiedad = avMoreno708 ;
+% UnaPropiedad = avMoreno708 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = avSiempreViva742 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = calleFalsa123 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = calleFalsa123 ;
+% UnaPersona = chamaleon,
+% UnaPropiedad = calleFalsa123.
+
+% 9. Qué persona se relaciona con cuál propiedad (asegurarse de que ambas alternativas encuentren las mismas soluciones, ya sean en el mismo orden o no).
+% ?- mejorOpcion(Alguien,UnaPropiedad).
+% Alguien = carlos,
+% UnaPropiedad = calleFalsa123 ;
+% Alguien = maria,
+% UnaPropiedad = calleFalsa123 ;
+% Alguien = pedro,
+% UnaPropiedad = calleFalsa123 ;
+% Alguien = chamaleon,
+% UnaPropiedad = calleFalsa123 ;
+% Alguien = chamaleon,
+% UnaPropiedad = calleFalsa123 ;
+% Alguien = chamaleon,
+% UnaPropiedad = calleFalsa123.
+
+% 10. 
