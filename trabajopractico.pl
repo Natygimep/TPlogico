@@ -84,6 +84,17 @@ estaSatisfecho(Persona) :-
     length(Propiedades,Cantidad),
     Cantidad >= 1.
 
+efectividad(Efectividad) :-
+    findall(Persona,persona(Persona),Personas),
+    findall(PersonaSatisfecha,estaSatisfecho(PersonaSatisfecha),PersonasSatisfechas),
+    list_to_set(Personas,PersonasSinRepetidos),
+    list_to_set(PersonasSatisfechas,PersonasSatisfechasSinRepetidos),
+    length(PersonasSinRepetidos,PersonasTotales),
+    length(PersonasSatisfechasSinRepetidos,PersonasSatisfechasTotales),
+    Efectividad is PersonasSatisfechasTotales / PersonasTotales * 100.
+
+
+
 
 % Consultas
 % 1 Si existe alguna propiedad con una piscina de 30 metros. Y si es que existe, cuál es.
@@ -222,4 +233,6 @@ estaSatisfecho(Persona) :-
 % Alguien = chamaleon,
 % UnaPropiedad = calleFalsa123.
 
-% 10.
+% 10. Qué efectividad tiene nuestro sistema.
+% ?- efectividad(Efectividad).
+% Efectividad = 80.0.
