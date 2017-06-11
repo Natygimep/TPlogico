@@ -78,6 +78,12 @@ mejorOpcion(Persona,Propiedad) :-
     propiedad(Propiedad,Precio),
     forall((cumpleTodo(Persona,OtraPropiedad),OtraPropiedad \= Propiedad),(propiedad(OtraPropiedad,OtroPrecio),Precio < OtroPrecio)).
 
+estaSatisfecho(Persona) :-
+    persona(Persona),
+    findall(Propiedad,cumpleTodo(Persona,Propiedad),Propiedades),
+    length(Propiedades,Cantidad),
+    Cantidad >= 1.
+
 
 % Consultas
 % 1 Si existe alguna propiedad con una piscina de 30 metros. Y si es que existe, cuál es.
@@ -216,4 +222,4 @@ mejorOpcion(Persona,Propiedad) :-
 % Alguien = chamaleon,
 % UnaPropiedad = calleFalsa123.
 
-% 10. 
+% 10.
